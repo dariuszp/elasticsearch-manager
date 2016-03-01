@@ -32,3 +32,12 @@ body {
     color: #fff;
     padding: 2px;
 }
+
+.index-list-item {
+    display: inline-block;
+    margin: 0;
+}
+
+.list-group-item.active a {
+    color: #fff;
+}
