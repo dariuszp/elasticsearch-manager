@@ -1,0 +1,29 @@
+{
+  "name": "elasticsearch-manager",
+  "description": "ES Manager",
+  "main": "index.html",
+  "authors": [
+    "Dariusz Półtorak <poltorak.dariusz@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "elasticsearch",
+    "es",
+    "manager"
+  ],
+  "homepage": "https://github.com/dariuszp/elasticsearch-manager",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.2.18",
+    "bootstrap": "^3.3.6",
+    "elasticsearch": "^10.1.3",
+    "angular": "^1.5.0"
+  }
+}
