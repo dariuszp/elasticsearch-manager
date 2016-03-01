@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('app', ['elasticsearch']);
+    var app = angular.module('app', ['ui.router', 'elasticsearch']);
 
     app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
         $urlRouterProvider.when('', '/');
