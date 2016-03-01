@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('app.index', ['ui.router', 'elasticsearch']);
+    var app = angular.module('app.index', ['ui.router', 'app.service.es', 'app.homepage']);
 
     app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
 
@@ -10,17 +10,18 @@
                 url: ":index",
                 templateUrl: './html/index.html',
                 controller: 'IndexController'
-            })
+            });
     }]);
 
     app.controller('IndexController', ['$scope', 'es', '$stateParams', function ($scope, es, $stateParams) {
-        $scope.index = [];
+        $scope.index = {};
 
         $scope.getIndex = function (name) {
             es.indices.get({
                 index: name
             }, function (err, response) {
-                $scope.index = response;
+                $scope.index = response[$stateParams.index];
+                $scope.index.name = $stateParams.index;
             });
         };
 

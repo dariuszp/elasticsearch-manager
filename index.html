@@ -28,6 +28,7 @@
 
 <ui-view></ui-view>
 
+<!--UI loading indicator-->
 <div id="loading-indicator" ng-hide="!pendingRequests">
     <div class="indicator">
         <img src="./img/ajax-loader.gif" alt="Loading..." title="Loading...">
@@ -35,8 +36,16 @@
     </div>
 </div>
 
+<!--Common scripts-->
 <script src="./js/base.js"></script>
+<!--Application-->
 <script src="./js/app.js"></script>
+<!--Factories-->
+<script src="./js/factory/requestInterceptor.js"></script>
+<!--Services-->
+<script src="./js/service/es.js"></script>
+<!--Controllers-->
+<script src="./js/controller/homepage.js"></script>
 <script src="./js/controller/index.js"></script>
 </body>
 </html>
