@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+    padding-top: 60px;
+}
+
 #loading-indicator {
     text-align: center;
     position: fixed;

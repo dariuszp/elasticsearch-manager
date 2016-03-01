@@ -1,1 +1,13 @@
-<h1>HELLO WORLD!</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-xs-12 col-sm-2">
+            <h4>Indexes</h4>
+            <div class="list-group">
+                <a ng-repeat="(indexName, indexStats) in stats.indices" ng-bind="indexName" ui-sref="homepage.index({ index: indexName })" href="" class="list-group-item"></a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>

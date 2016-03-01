@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('app', ['ui.router', 'elasticsearch']);
+    var app = angular.module('app', ['ui.router', 'elasticsearch', 'app.index']);
 
     app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
         $urlRouterProvider.when('', '/');
@@ -10,10 +10,10 @@
         $httpProvider.interceptors.push('RequestInterceptor');
 
         $stateProvider
-            .state('indices', {
+            .state('homepage', {
                 url: "/",
                 templateUrl: './html/homepage.html',
-                controller: 'IndicesController'
+                controller: 'HomepageController'
             })
     }]);
 
@@ -57,15 +57,15 @@
         });
     }]);
 
-    app.controller('IndicesController', ['$scope', 'es', function ($scope, es) {
-        $scope.indices = [];
+    app.controller('HomepageController', ['$scope', 'es', function ($scope, es) {
+        $scope.stats = [];
 
-        $scope.getIndices = function () {
-            es.indices.get(function (err, response) {
-                $scope.indices = response;
-            })
-        }
+        $scope.getStats = function () {
+            es.indices.stats({}, function (err, response) {
+                $scope.stats = response;
+            });
+        };
 
-        $scope.getIndices();
+        $scope.getStats();
     }]);
 }());
