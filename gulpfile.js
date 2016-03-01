@@ -7,7 +7,8 @@ var gulp = require('gulp'),
 
 gulp.task('css', function () {
     return gulp.src([
-        './bower_components/bootstrap/dist/css/bootstrap.css'
+        './bower_components/bootstrap/dist/css/bootstrap.css',
+        './bower_components/font-awesome/css/font-awesome.css'
     ])
         .pipe(uglifycss({
             maxLineLen: 80,
@@ -19,7 +20,8 @@ gulp.task('css', function () {
 
 gulp.task('fonts', function () {
     return gulp.src([
-        './bower_components/bootstrap/dist/fonts/*'
+        './bower_components/bootstrap/dist/fonts/*',
+        './bower_components/font-awesome/fonts/*'
     ])
         .pipe(gulp.dest('fonts'))
 });
