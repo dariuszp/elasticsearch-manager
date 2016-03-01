@@ -2,7 +2,27 @@
 
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
+    uglifycss = require('gulp-uglifycss'),
     concat = require('gulp-concat');
+
+gulp.task('css', function () {
+    return gulp.src([
+        './bower_components/bootstrap/dist/css/bootstrap.css'
+    ])
+        .pipe(uglifycss({
+            maxLineLen: 80,
+            uglyComments: false
+        }))
+        .pipe(concat('base.css'))
+        .pipe(gulp.dest('css'));
+});
+
+gulp.task('fonts', function () {
+    return gulp.src([
+        './bower_components/bootstrap/dist/fonts/*'
+    ])
+        .pipe(gulp.dest('fonts'))
+});
 
 gulp.task('js', function() {
     return gulp.src([
@@ -18,5 +38,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('default', [
+    'fonts',
+    'css',
     'js'
 ]);
