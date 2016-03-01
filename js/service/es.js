@@ -6,7 +6,7 @@
     app.service('es', ['esFactory', function (esFactory) {
         return esFactory({
             host: 'localhost:9200',
-            log: 'trace'
+            //log: 'trace'
         });
     }]);
 

@@ -13,13 +13,16 @@
             });
     }]);
 
-    app.controller('IndexController', ['$scope', 'es', '$stateParams', function ($scope, es, $stateParams) {
+    app.controller('IndexController', ['$scope', 'es', '$state', '$stateParams', function ($scope, es, $state, $stateParams) {
         $scope.index = {};
-
+console.log('haha1');
         $scope.getIndex = function (name) {
             es.indices.get({
                 index: name
             }, function (err, response) {
+                if (err) {
+                    return $state.go('homepage');
+                }
                 $scope.index = response[$stateParams.index];
                 $scope.index.name = $stateParams.index;
             });
