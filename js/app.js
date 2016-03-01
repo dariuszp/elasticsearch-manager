@@ -10,13 +10,10 @@
         $httpProvider.interceptors.push('RequestInterceptor');
 
         $stateProvider
-            .state('indice', {
+            .state('indices', {
                 url: "/",
                 templateUrl: './html/homepage.html',
-                controller: 'ElasticController',
-                params: {
-                    page: '1'
-                }
+                controller: 'IndicesController'
             })
     }]);
 
@@ -60,7 +57,7 @@
         });
     }]);
 
-    app.controller('ElasticController', ['$scope', 'es', function ($scope, es) {
+    app.controller('IndicesController', ['$scope', 'es', function ($scope, es) {
         $scope.indices = [];
 
         $scope.getIndices = function () {
