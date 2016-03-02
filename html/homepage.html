@@ -13,23 +13,26 @@
                     </div>
                 </div>
             </div>
-            <div class="well">
-                <form action="/" method="post" class="form-horizontal" ng-submit="createIndex($event, index.name, index.number_of_shards, index.number_of_replicas)">
-                    <div class="form-group">
-                        <label for="newIndexName">New index name</label>
-                        <input type="text" ng-model="index.name" placeholder="New index name" id="newIndexName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="newIndexNumberOfShards">Number of shards</label>
-                        <input type="number" step="1" min="1" ng-model="index.number_of_shards" placeholder="Number of shards" id="newIndexNumberOfShards" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="newIndexNumberOfReplicas">Number of replicas</label>
-                        <input type="number" step="1" min="0" ng-model="index.number_of_replicas" placeholder="Number of replicas" id="newIndexNumberOfReplicas" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-block btn-success"><span class="fa fa-plus"></span> Create index</button>
-                    </div>
+            <div class="well well-sm">
+                <form action="/" method="post" class="form" ng-submit="createIndex($event, index.name, index.number_of_shards, index.number_of_replicas)">
+                    <fieldset>
+                        <legend>New index</legend>
+                        <div class="form-group">
+                            <label for="newIndexName">Index name</label>
+                            <input type="text" ng-model="index.name" placeholder="New index name" id="newIndexName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="newIndexNumberOfShards">Number of shards</label>
+                            <input type="number" step="1" min="1" ng-model="index.number_of_shards" placeholder="Number of shards" id="newIndexNumberOfShards" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="newIndexNumberOfReplicas">Number of replicas</label>
+                            <input type="number" step="1" min="0" ng-model="index.number_of_replicas" placeholder="Number of replicas" id="newIndexNumberOfReplicas" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-success"><span class="fa fa-plus"></span> Create index</button>
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         </div>
