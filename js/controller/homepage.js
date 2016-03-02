@@ -15,9 +15,11 @@
 
     app.controller('HomepageController', ['$scope', 'es', '$state', '$stateParams', function ($scope, es, $state, $stateParams) {
         $scope.stats = [];
-        $scope.newIndexName = '';
-
-        console.log($state);
+        $scope.index = {
+            name: '',
+            number_of_replicas: 0,
+            number_of_shards: 1
+        };
 
         $scope.getStats = function () {
             es.indices.stats({}, function (err, response) {
@@ -28,22 +30,34 @@
             });
         };
 
-        $scope.createIndex = function (event, name) {
+        $scope.createIndex = function (event, name, number_of_shards, number_of_replicas) {
             event.preventDefault();
             es.indices.create({
-                index: name
+                index: name,
+                body: {
+                    settings: {
+                        index: {
+                            number_of_replicas: parseInt(number_of_replicas, 10) || 0,
+                            number_of_shards: parseInt(number_of_shards, 10) || 1
+                        }
+                    }
+                }
             }, function (err) {
                 if (err) {
                     alert(err.message);
                 }
-                $scope.newIndexName = '';
+                $scope.index = {
+                    name: '',
+                    number_of_replicas: 0,
+                    number_of_shards: 1
+                };
                 setTimeout(function () {
                     $scope.getStats();
                     return $state.go('homepage.index', {
                         index: name
                     });
                 }, 500);
-            });
+            })
         };
 
         $scope.deleteIndex = function (event, name) {

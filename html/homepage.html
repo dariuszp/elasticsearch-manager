@@ -13,14 +13,25 @@
                     </div>
                 </div>
             </div>
-            <form action="/" method="post" ng-submit="createIndex($event, newIndexName)">
-                <div class="input-group">
-                    <input type="text" ng-model="newIndexName" placeholder="New index name" class="form-control">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-success"><span class="fa fa-plus"></span></button>
-                    </span>
-                </div>
-            </form>
+            <div class="well">
+                <form action="/" method="post" class="form-horizontal" ng-submit="createIndex($event, index.name, index.number_of_shards, index.number_of_replicas)">
+                    <div class="form-group">
+                        <label for="newIndexName">New index name</label>
+                        <input type="text" ng-model="index.name" placeholder="New index name" id="newIndexName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="newIndexNumberOfShards">Number of shards</label>
+                        <input type="number" step="1" min="1" ng-model="index.number_of_shards" placeholder="Number of shards" id="newIndexNumberOfShards" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="newIndexNumberOfReplicas">Number of replicas</label>
+                        <input type="number" step="1" min="0" ng-model="index.number_of_replicas" placeholder="Number of replicas" id="newIndexNumberOfReplicas" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-success"><span class="fa fa-plus"></span> Create index</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-10">
             <ui-view></ui-view>
