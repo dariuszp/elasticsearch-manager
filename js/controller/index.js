@@ -16,9 +16,9 @@
     app.controller('IndexController', ['$scope', 'es', '$state', '$stateParams', function ($scope, es, $state, $stateParams) {
         $scope.index = {};
 
-        $scope.getIndex = function (name) {
+        $scope.getIndex = function () {
             es.indices.get({
-                index: name
+                index: $stateParams.index
             }, function (err, response) {
                 if (err) {
                     return $state.go('homepage');
@@ -28,6 +28,19 @@
             });
         };
 
-        $scope.getIndex($stateParams.index);
+        $scope.addAlias = function ($event, name) {
+            event.preventDefault();
+            es.indices.putAlias({
+                index: $stateParams.index,
+                name: name
+            }, function (err, response) {
+                if (err) {
+                    return alert(err.message);
+                }
+                $scope.getIndex();
+            })
+        };
+
+        $scope.getIndex();
     }]);
 }());
