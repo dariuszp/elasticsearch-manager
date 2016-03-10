@@ -15,6 +15,7 @@
 
     app.controller('IndexController', ['$scope', 'es', '$state', '$stateParams', function ($scope, es, $state, $stateParams) {
         $scope.index = {};
+        $scope.newAliasName = '';
 
         $scope.getIndex = function () {
             es.indices.get({
@@ -29,6 +30,10 @@
         };
 
         $scope.addAlias = function ($event, name) {
+            console.log({
+                index: $stateParams.index,
+                name: name
+            });
             event.preventDefault();
             es.indices.putAlias({
                 index: $stateParams.index,

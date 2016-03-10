@@ -4,10 +4,10 @@
 <fieldset>
     <legend>Aliases</legend>
     <div class="aliases">
-        <span ng-repeat="alias in index.aliases" class="label label-info">alias</span>
+        <span ng-repeat="(alias, data) in index.aliases" class="label label-info" ng-bind="alias"></span>
         <form action="/" ng-submit="addAlias($event, newAliasName)" class="pull-left">
             <div class="input-group">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" ng-model="newAliasName" required="required">
                 <span class="input-group-btn">
                     <button class="btn btn-success" type="button"><span class="fa fa-plus"></span></button>
                 </span>
