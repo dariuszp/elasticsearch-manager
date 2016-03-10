@@ -5,7 +5,7 @@
     <legend>Aliases</legend>
     <div class="aliases">
         <div class="list pull-left">
-            <span ng-repeat="(alias, data) in index.aliases" class="btn btn-info" ng-bind="alias"></span>
+            <span ng-repeat="(alias, data) in index.aliases" class="btn btn-info"><span ng-bind="alias"></span> <strong class="text-danger">&times;</strong></span>
         </div>
         <form action="/" class="form-inline" ng-submit="addAlias($event, newAliasName)" class="pull-left">
             <div class="input-group">
