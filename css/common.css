@@ -41,3 +41,11 @@ body {
 .list-group-item.active a {
     color: #fff;
 }
+
+.aliases .list span {
+    margin: 0 4px;
+}
+
+fieldset.section {
+    padding-bottom: 30px;
+}
