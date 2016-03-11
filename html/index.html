@@ -7,11 +7,11 @@
         <div class="list pull-left">
             <span ng-repeat="(alias, data) in index.aliases" class="btn btn-info"><span ng-bind="alias"></span> <strong class="text-danger">&times;</strong></span>
         </div>
-        <form action="/" class="form-inline" ng-submit="addAlias($event, newAliasName)" class="pull-left">
+        <form action="/" class="form-inline" ng-submit="addAlias($event, newAliasName)">
             <div class="input-group">
                 <input type="text" class="form-control" ng-model="newAliasName" required="required">
                 <span class="input-group-btn">
-                    <button class="btn btn-success" type="button"><span class="fa fa-plus"></span></button>
+                    <button class="btn btn-success" type="button"><span class="fa fa-plus"></span> Add alias</button>
                 </span>
             </div>
         </form>
@@ -21,13 +21,32 @@
 <fieldset class="section">
     <legend>Mappings</legend>
     <div class="mappings">
-
+        <form action="/" class="form-inline" ng-submit="addType($event, newTypeName)">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="newTypeName" required="required">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="button"><span class="fa fa-plus"></span> Add type</button>
+                </span>
+            </div>
+        </form>
+        <div class="list">
+            <div ng-repeat="(name, data) in index.mappings">
+                <h4 ng-bind="name"></h4>
+            </div>
+        </div>
+        <div class="section-footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-4">
+                    <button class="btn btn-block btn-success" ng-click="putMapping($event)"><span class="fa fa-save"></span> Update mapping</button>
+                </div>
+            </div>
+        </div>
     </div>
 </fieldset>
 
 <fieldset class="section">
     <legend>Settings</legend>
-    <div class="mappings">
+    <div class="settings">
 
     </div>
 </fieldset>

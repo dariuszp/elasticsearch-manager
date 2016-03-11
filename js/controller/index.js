@@ -4,7 +4,6 @@
     var app = angular.module('app.index', ['ui.router', 'app.service.es', 'app.homepage']);
 
     app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
-
         $stateProvider
             .state('homepage.index', {
                 url: ":index",
@@ -15,7 +14,9 @@
 
     app.controller('IndexController', ['$scope', 'es', '$state', '$stateParams', function ($scope, es, $state, $stateParams) {
         $scope.index = {};
+        $scope.mapping = {};
         $scope.newAliasName = '';
+        $scope.newTypeName = '';
 
         $scope.getIndex = function () {
             es.indices.get({
@@ -30,10 +31,6 @@
         };
 
         $scope.addAlias = function ($event, name) {
-            console.log({
-                index: $stateParams.index,
-                name: name
-            });
             event.preventDefault();
             es.indices.putAlias({
                 index: $stateParams.index,
@@ -44,6 +41,14 @@
                 }
                 $scope.getIndex();
             })
+        };
+
+        $scope.addType = function ($event, name) {
+            event.preventDefault();
+            if (!$scope.index.mappings[name]) {
+                $scope.index.mappings[name] = {};
+            }
+            $scope.newTypeName = '';
         };
 
         $scope.getIndex();
